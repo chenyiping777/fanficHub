@@ -1,0 +1,52 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+#  main:
+##    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  # 激活开发环境
+  profiles:
+    active: dev
+
+# MyBatis‑Plus
+mybatis-plus:
+  mapper-locations: classpath:com/cheny/mapper/*.xml
+  type-aliases-package: com.cheny.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  type-enums-package: com.cheny.enums
+
+alioss:
+  endpoint: https://oss-cn-beijing.aliyuncs.com
+  bucket-name: java-cheny
+  region: cn-beijing
+  access-key-id: ${fanfic.alioss.access-key-id}
+  access-key-secret: ${fanfic.alioss.access-key-secret}
+
+jwt:
+  secret: ${fanfic.jwt.secret}
+  expire: 7200
+
+wx:
+  app-id: ${fanfic.wx.app-id}
+  app-secret: ${fanfic.wx.app-secret}
+
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+http:
+  client:
+    timeout-seconds: 10
