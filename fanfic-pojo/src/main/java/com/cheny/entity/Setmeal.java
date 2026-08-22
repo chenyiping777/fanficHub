@@ -50,7 +50,7 @@ public class Setmeal implements Serializable {
     */
     @NotNull(message="[组合约稿打包价格]不能为空")
     @Schema(description = "组合约稿打包价格")
-    private BigDecimal price;
+    private Double price;
     /**
     * 组合图片路径
     */

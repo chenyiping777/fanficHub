@@ -122,8 +122,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category>
 
     @Override
     public List<CategoryVo> selectByType(Integer type) {
-        List<Category> categoryList = lambdaQuery().eq(Category::getType, type)
+        List<Category> categoryList = lambdaQuery()
+                .eq(Category::getType, type)
                 .eq(Category::getStatus, StatusConstant.ENABLE)
+                .orderByAsc(Category::getSort)
                 .list();
         //集合拷贝  stream+单个对象拷贝
         return categoryList.stream().map(
@@ -138,6 +140,9 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category>
     @Override
     public void removeCategoryById(Long id) {
 
+        //这个不可以单单只判断状态是否是启用的
+        //因为关键这个分类能不能删关键在于这个分类地下不能有菜品或者套餐，
+        //在禁用状态下，最多可以说明菜品或者套餐状态时禁用的，并不能说明这个分类下没有菜品或者套餐
         //级联删除，要先判断type，然后再操作关联表记录的删除
         Category category = getById(id);
         if (category.getType() == 1) {

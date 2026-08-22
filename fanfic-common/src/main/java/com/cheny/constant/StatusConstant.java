@@ -6,4 +6,7 @@ public class StatusConstant {
 
     //禁用
     public static final Integer DISABLE = 0;
+
+    public static  final Integer IS_DEFAULT = 1;
+    public static  final Integer NOT_DEFAULT = 1;
 }

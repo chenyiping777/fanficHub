@@ -1,7 +1,11 @@
 package com.cheny.service;
 
 import com.baomidou.mybatisplus.spring.service.IService;
+import com.cheny.dto.ShoppingCartDto;
 import com.cheny.entity.ShoppingCart;
+import com.cheny.vo.ShoppingCartVo;
+
+import java.util.List;
 
 /**
 * @author Mlpnk
@@ -10,4 +14,9 @@ import com.cheny.entity.ShoppingCart;
 */
 public interface ShoppingCartService extends IService<ShoppingCart> {
 
+    List<ShoppingCartVo> getShoppingCartList();
+
+    void add(ShoppingCartDto shoppingCartDto);
+
+    void updateNum(Long id, Integer num);
 }

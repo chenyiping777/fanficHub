@@ -6,6 +6,7 @@ import com.cheny.entity.Dish;
 import com.cheny.query.DishQuery;
 import com.cheny.vo.DishVo;
 import com.cheny.vo.PageVo;
+import jakarta.validation.Valid;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -27,10 +28,10 @@ public interface DishService extends IService<Dish> {
     PageVo<DishVo> getDishPage(DishQuery dishQuery);
 
     //修改菜品信息
-    void updateDish(DishDto dishDto, MultipartFile imageFile);
+    void updateDish(@Valid DishDto dishDto, MultipartFile imageFile);
 
     //添加菜品
-    void addDish(DishDto dishDto, MultipartFile imageFile);
+    void addDish(@Valid DishDto dishDto, MultipartFile imageFile);
 
     //根据分类id查询菜品  用户端点击菜品分类时用
     List<DishVo> getDishesById(Integer categoryId);

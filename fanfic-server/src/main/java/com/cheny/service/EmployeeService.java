@@ -7,6 +7,7 @@ import com.cheny.entity.Employee;
 import com.cheny.query.EmployeeQuery;
 import com.cheny.vo.EmployeeVo;
 import com.cheny.vo.PageVo;
+import jakarta.validation.Valid;
 
 /**
 * @author Mlpnk
@@ -16,9 +17,9 @@ import com.cheny.vo.PageVo;
 public interface EmployeeService extends IService<Employee> {
 
     //登录
-    Employee login(EmployeeLoginDto employeeLoginDto);
+    Employee login(@Valid EmployeeLoginDto employeeLoginDto);
     //保存员工
-    void saveEmployee(EmployeeDto employeeDto);
+    void saveEmployee(@Valid EmployeeDto employeeDto);
 
     //分页查询员工
     PageVo<EmployeeVo> getEmployeePage(EmployeeQuery employeeQuery);
@@ -30,10 +31,10 @@ public interface EmployeeService extends IService<Employee> {
     void updateStatus(Integer status, Long id);
 
     //修改员工信息
-    void updateEmployee(EmployeeDto employeeDto);
+    void updateEmployee(@Valid EmployeeDto employeeDto);
 
     //修改密码
-    void updatePassword(PasswordEditDto passwordEditDto, Long userId);
+    void updatePassword(@Valid PasswordEditDto passwordEditDto, Long userId);
 
 
 }
